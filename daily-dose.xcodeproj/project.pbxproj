@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A56BAC681FE6E7A600F0C389 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56BAC671FE6E7A600F0C389 /* GoogleMobileAds.framework */; };
+		A56BAC6C1FE711D600F0C389 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56BAC6B1FE711D600F0C389 /* PurchaseManager.swift */; };
 		A577DF101FE6D906004A52A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577DF0F1FE6D906004A52A0 /* AppDelegate.swift */; };
 		A577DF121FE6D906004A52A0 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577DF111FE6D906004A52A0 /* HomeVC.swift */; };
 		A577DF151FE6D906004A52A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A577DF131FE6D906004A52A0 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		A56BAC671FE6E7A600F0C389 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../assets/Daily Dose Assets/GoogleMobileAdsSdkiOS-7.27.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		A56BAC6B1FE711D600F0C389 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		A577DF0C1FE6D906004A52A0 /* daily-dose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "daily-dose.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A577DF0F1FE6D906004A52A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A577DF111FE6D906004A52A0 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		A56BAC6A1FE711C300F0C389 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A56BAC6B1FE711D600F0C389 /* PurchaseManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A577DF031FE6D906004A52A0 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 		A577DF0E1FE6D906004A52A0 /* daily-dose */ = {
 			isa = PBXGroup;
 			children = (
+				A56BAC6A1FE711C300F0C389 /* Services */,
 				A56BAC691FE7108D00F0C389 /* Controller */,
 				A577DF0F1FE6D906004A52A0 /* AppDelegate.swift */,
 				A577DF131FE6D906004A52A0 /* Main.storyboard */,
@@ -166,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A577DF121FE6D906004A52A0 /* HomeVC.swift in Sources */,
+				A56BAC6C1FE711D600F0C389 /* PurchaseManager.swift in Sources */,
 				A577DF101FE6D906004A52A0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
