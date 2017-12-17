@@ -6,6 +6,8 @@
 //  Copyright © 2017 Donald Belliveau. All rights reserved.
 //
 
+typealias CompletionHandler = (_ success: Bool)-> ()
+
 import Foundation
 import StoreKit
 
@@ -25,6 +27,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
     let IAP_REMOVE_ADS = "com.donaldbelliveau.daily.dose.remove.ads"
     var productsRequest: SKProductsRequest! // Request we send to the App Stor to get Products
     var products = [SKProduct]() // Array of Products the App Store sends me back -> Our IAP ID's.
+    var transactionComplete: CompletionHandler?
     
     /*
      Functions
@@ -65,9 +68,10 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
     
     /*  */
     
-    func purchaseRemoveAds() {
+    func purchaseRemoveAds(onComplete: @escaping CompletionHandler) {
             // Make sure user CAN make a payment-> Room on card, not a child...
         if SKPaymentQueue.canMakePayments() && products.count > 0 {
+            transactionComplete = onComplete
                 // You will receive the items in order they are in iTunes Connect
             let removeAdsProduct = products[0]
                 // Create a payment
@@ -76,6 +80,9 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
             SKPaymentQueue.default().add(self)
                 // Add the payment
             SKPaymentQueue.default().add(payment)
+            
+        } else {
+            onComplete(false)
         }
     }
 
@@ -89,13 +96,20 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
             case .purchased:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 if transaction.payment.productIdentifier == IAP_REMOVE_ADS {
-                    
+                    UserDefaults.standard.set(true, forKey: IAP_REMOVE_ADS)
+                    transactionComplete?(true)
                 }
                 break
             case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                transactionComplete?(false)
                 break
             case .restored:
-            default: break
+                SKPaymentQueue.default().finishTransaction(transaction)
+                transactionComplete?(true)
+            default:
+                transactionComplete?(false)
+                break
             }
         }
         
@@ -107,7 +121,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
 // END Class.
 
 
-// PurchaseManager:  
+// PurchaseManager:
 
 
 
