@@ -66,7 +66,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
     } // END Products Request.
     
     
-    /*  */
+    /* Purchase Remove Ads Function. */
     
     func purchaseRemoveAds(onComplete: @escaping CompletionHandler) {
             // Make sure user CAN make a payment-> Room on card, not a child...
@@ -84,7 +84,20 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
         } else {
             onComplete(false)
         }
-    }
+    } // END Purchase Remove Ads.
+    
+    
+    /* Restore Purchases Function */
+    
+        func restorePurchases(onComplete: @escaping CompletionHandler) {
+            if SKPaymentQueue.canMakePayments() {
+                transactionComplete = onComplete
+                SKPaymentQueue.default().add(self)
+                SKPaymentQueue.default().restoreCompletedTransactions()
+            } else {
+                onComplete(false)
+            }
+    } // END Restore Purchases
 
     
     /* Payment Queue Function. */
@@ -106,6 +119,9 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
                 break
             case .restored:
                 SKPaymentQueue.default().finishTransaction(transaction)
+                if transaction.payment.productIdentifier == IAP_REMOVE_ADS {
+                    UserDefaults.standard.set(true, forKey: IAP_REMOVE_ADS)
+                }
                 transactionComplete?(true)
             default:
                 transactionComplete?(false)
@@ -113,27 +129,10 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
             }
         }
         
-        
     } // END Payment Queue.
 
     
 }
 // END Class.
 
-
-// PurchaseManager:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 

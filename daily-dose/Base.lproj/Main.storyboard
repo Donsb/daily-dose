@@ -41,12 +41,25 @@
                                             </label>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-ax-AtV">
+                                        <rect key="frame" x="329" y="10" width="31" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="7rL-LC-fu5"/>
+                                            <constraint firstAttribute="width" constant="31" id="IYZ-Ok-eg2"/>
+                                        </constraints>
+                                        <state key="normal" image="restore"/>
+                                        <connections>
+                                            <action selector="restoreBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xMm-XT-Dto"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="O03-va-opP" firstAttribute="top" secondItem="jMD-ut-i3j" secondAttribute="top" constant="35" id="4Nn-3z-Qxi"/>
                                     <constraint firstAttribute="height" constant="160" id="4Oz-72-Nvm"/>
+                                    <constraint firstAttribute="trailing" secondItem="EHD-ax-AtV" secondAttribute="trailing" constant="15" id="8oi-VA-7V9"/>
                                     <constraint firstAttribute="trailing" secondItem="bWv-c0-Q8L" secondAttribute="trailing" id="GQv-NV-Rm8"/>
+                                    <constraint firstItem="EHD-ax-AtV" firstAttribute="top" secondItem="jMD-ut-i3j" secondAttribute="top" constant="10" id="Mg8-Kd-g2Y"/>
                                     <constraint firstItem="O03-va-opP" firstAttribute="centerX" secondItem="jMD-ut-i3j" secondAttribute="centerX" id="c9f-f8-vOv"/>
                                     <constraint firstAttribute="bottom" secondItem="bWv-c0-Q8L" secondAttribute="bottom" id="dtW-DE-kiI"/>
                                     <constraint firstItem="bWv-c0-Q8L" firstAttribute="top" secondItem="jMD-ut-i3j" secondAttribute="top" id="kZy-aV-WN1"/>
@@ -140,6 +153,7 @@
     </scenes>
     <resources>
         <image name="BGImage" width="475" height="300"/>
+        <image name="restore" width="31" height="27"/>
         <image name="videoThumbnail" width="375" height="250"/>
     </resources>
 </document>

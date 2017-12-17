@@ -24,24 +24,11 @@ class HomeVC: UIViewController {
      */
     
     
-    
     /* View Did Load Function. */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if UserDefaults.standard.bool(forKey: PurchaseManager.instance.IAP_REMOVE_ADS) {
-            removeAdsBtn.removeFromSuperview()
-            bannerView.removeFromSuperview()
-        } else {
-            // Set the ad to my Google Dev Account -> This is a test fake account.
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            bannerView.rootViewController = self
-            
-            // Next, Load the Ad Request.
-            bannerView.load(GADRequest())
-        }
-        
+        setUpAds()
     } // END View Did Load
     
     
@@ -52,7 +39,7 @@ class HomeVC: UIViewController {
     } // END Did Receive Memory Warning
     
     
-    /*  */
+    /* Remove Ads Pressed Function */
     
     @IBAction func removeAdsPressed(_ sender: Any) {
         // Show loading spinner.
@@ -65,39 +52,38 @@ class HomeVC: UIViewController {
                 // Show message to user.
             }
         }
-    }
+    } // END Remove Ads Pressed.
     
+    
+    /* Restore Btn Pressed Function. */
+    
+    @IBAction func restoreBtnPressed(_ sender: Any) {
+        PurchaseManager.instance.restorePurchases { (success) in
+            if success {
+                self.setUpAds()
+            }
+        }
+    } // END Restore Btn Pressed.
+    
+    
+    /* Set Up Ads Function. */
+    
+    func setUpAds() {
+        if UserDefaults.standard.bool(forKey: PurchaseManager.instance.IAP_REMOVE_ADS) {
+            removeAdsBtn.removeFromSuperview()
+            bannerView.removeFromSuperview()
+        } else {
+            // Set the ad to my Google Dev Account -> This is a test fake account.
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            bannerView.rootViewController = self
+            
+            // Next, Load the Ad Request.
+            bannerView.load(GADRequest())
+        }
+    } // END Set Up Ads
     
     
 }
 // END Class
-
-
-// HomeVC:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
