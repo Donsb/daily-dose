@@ -28,7 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /* Did Finish Launching With Options Function. */
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+            // This will associate the App with your Google Dev Account.
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
+        
         return true
     } // END Did Finish Launching With Options.
     
