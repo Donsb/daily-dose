@@ -31,16 +31,74 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
      */
     
     
+    /* Fetch Products Function. */
+    
+    func fetchProducts() {
+        
+            // This is How Apple requires you to fetch the IAP ID's.
+        let productIds = NSSet(object: IAP_REMOVE_ADS) as! Set<String>
+        
+            // Save our request.
+        productsRequest = SKProductsRequest(productIdentifiers: productIds)
+        
+            // Set delegate to Self.-> This will call the productsRequest Function below (Next Function).
+        productsRequest.delegate = self
+        
+            // Starts the process.
+        productsRequest.start()
+        
+    } // END Fetch Products
+    
+    
     /* Products Request Function. */
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
+            // Check if there are some, and if so store them to products.
+        if response.products.count > 0 {
+            print("TEST: \(response.products.debugDescription)")
+            products = response.products
+        }
+        
     } // END Products Request.
+    
+    
+    /*  */
+    
+    func purchaseRemoveAds() {
+            // Make sure user CAN make a payment-> Room on card, not a child...
+        if SKPaymentQueue.canMakePayments() && products.count > 0 {
+                // You will receive the items in order they are in iTunes Connect
+            let removeAdsProduct = products[0]
+                // Create a payment
+            let payment = SKPayment(product: removeAdsProduct)
+                // Add Observer
+            SKPaymentQueue.default().add(self)
+                // Add the payment
+            SKPaymentQueue.default().add(payment)
+        }
+    }
 
     
     /* Payment Queue Function. */
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                if transaction.payment.productIdentifier == IAP_REMOVE_ADS {
+                    
+                }
+                break
+            case .failed:
+                break
+            case .restored:
+            default: break
+            }
+        }
+        
         
     } // END Payment Queue.
 

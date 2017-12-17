@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // This will associate the App with your Google Dev Account.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
         
+            // Grab our IAP ID's.
+        PurchaseManager.instance.fetchProducts()
+        
         return true
     } // END Did Finish Launching With Options.
     
