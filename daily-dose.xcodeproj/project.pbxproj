@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A56BAC681FE6E7A600F0C389 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56BAC671FE6E7A600F0C389 /* GoogleMobileAds.framework */; };
 		A577DF101FE6D906004A52A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577DF0F1FE6D906004A52A0 /* AppDelegate.swift */; };
-		A577DF121FE6D906004A52A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577DF111FE6D906004A52A0 /* ViewController.swift */; };
+		A577DF121FE6D906004A52A0 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577DF111FE6D906004A52A0 /* HomeVC.swift */; };
 		A577DF151FE6D906004A52A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A577DF131FE6D906004A52A0 /* Main.storyboard */; };
 		A577DF171FE6D906004A52A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A577DF161FE6D906004A52A0 /* Assets.xcassets */; };
 		A577DF1A1FE6D906004A52A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A577DF181FE6D906004A52A0 /* LaunchScreen.storyboard */; };
@@ -20,7 +20,7 @@
 		A56BAC671FE6E7A600F0C389 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../assets/Daily Dose Assets/GoogleMobileAdsSdkiOS-7.27.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		A577DF0C1FE6D906004A52A0 /* daily-dose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "daily-dose.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A577DF0F1FE6D906004A52A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A577DF111FE6D906004A52A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A577DF111FE6D906004A52A0 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A577DF141FE6D906004A52A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A577DF161FE6D906004A52A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A577DF191FE6D906004A52A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A56BAC691FE7108D00F0C389 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A577DF111FE6D906004A52A0 /* HomeVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A577DF031FE6D906004A52A0 = {
 			isa = PBXGroup;
 			children = (
@@ -61,8 +69,8 @@
 		A577DF0E1FE6D906004A52A0 /* daily-dose */ = {
 			isa = PBXGroup;
 			children = (
+				A56BAC691FE7108D00F0C389 /* Controller */,
 				A577DF0F1FE6D906004A52A0 /* AppDelegate.swift */,
-				A577DF111FE6D906004A52A0 /* ViewController.swift */,
 				A577DF131FE6D906004A52A0 /* Main.storyboard */,
 				A577DF161FE6D906004A52A0 /* Assets.xcassets */,
 				A577DF181FE6D906004A52A0 /* LaunchScreen.storyboard */,
@@ -157,7 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A577DF121FE6D906004A52A0 /* ViewController.swift in Sources */,
+				A577DF121FE6D906004A52A0 /* HomeVC.swift in Sources */,
 				A577DF101FE6D906004A52A0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

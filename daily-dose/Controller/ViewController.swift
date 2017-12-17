@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeVC.swift
 //  daily-dose
 //
 //  Created by Donald Belliveau on 2017-12-17.
@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class ViewController: UIViewController {
+class HomeVC: UIViewController {
     
     /*
      IBOutlets
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
 // END Class
 
 
-// ViewController: 
+// HomeVC:
 
 
 
