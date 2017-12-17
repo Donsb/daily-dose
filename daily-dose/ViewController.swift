@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ViewController: UIViewController {
     
+    /*
+     IBOutlets
+     */
+    
+    @IBOutlet weak var bannerView: GADBannerView!
     /*
      Functions.
      */
@@ -20,6 +26,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            // Set the ad to my Google Dev Account -> This is a test fake account.
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        
+            // Next, Load the Ad Request.
+        bannerView.load(GADRequest())
+        
     } // END View Did Load
     
     
